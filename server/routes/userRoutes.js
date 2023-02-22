@@ -7,16 +7,18 @@ router.post('/signup', userController.createUser)
 
 router.post('/login', userController.loginUser)
 
+router.get('/', tokenValidation.validateToken, userController.getUsers)
+
 router.post(
-  '/profile',
-  tokenValidation.validateToken,
-  userController.getUserProfile
+    '/profile',
+    tokenValidation.validateToken,
+    userController.getUserProfile
 )
 
 router.put(
-  '/profile',
-  tokenValidation.validateToken,
-  userController.updateUserProfile
+    '/profile',
+    tokenValidation.validateToken,
+    userController.updateUserProfile
 )
 
 module.exports = router
